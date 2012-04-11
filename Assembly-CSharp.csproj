@@ -44,12 +44,13 @@
 	</Reference>
   </ItemGroup>
   <ItemGroup>
-     <Compile Include="Assets\Scripts\AIMoveBackForth.cs" />
-     <Compile Include="Assets\Scripts\DealsDamage.cs" />
-     <Compile Include="Assets\Scripts\MovementControls.cs" />
-     <Compile Include="Assets\Scripts\ShootControls.cs" />
-     <Compile Include="Assets\Scripts\TakesDamage.cs" />
-     <Compile Include="Assets\Scripts\TimedLife.cs" />
+     <Compile Include="Assets\Scripts\Core Gameplay\AIMoveBackForth.cs" />
+     <Compile Include="Assets\Scripts\Core Gameplay\DealsDamage.cs" />
+     <Compile Include="Assets\Scripts\Core Gameplay\TakesDamage.cs" />
+     <Compile Include="Assets\Scripts\Input\MovementControls.cs" />
+     <Compile Include="Assets\Scripts\Input\ShootControls.cs" />
+     <Compile Include="Assets\Scripts\Utility\TimedLife.cs" />
+     <Compile Include="Assets\Scripts\World\SpawnEnemies.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
