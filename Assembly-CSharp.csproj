@@ -5,7 +5,7 @@
 	<Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
 	<ProductVersion>10.0.20506</ProductVersion>
 	<SchemaVersion>2.0</SchemaVersion>
-	<ProjectGuid>{8CC497B7-8C59-BA23-DA44-3BE24807F46E}</ProjectGuid>
+	<ProjectGuid>{E99CD61D-3567-C6E8-A33A-BD69405EF124}</ProjectGuid>
 	<OutputType>Library</OutputType>
 	<AppDesignerFolder>Properties</AppDesignerFolder>
 	<RootNamespace></RootNamespace>
@@ -44,7 +44,12 @@
 	</Reference>
   </ItemGroup>
   <ItemGroup>
+     <Compile Include="Assets\Scripts\AIMoveBackForth.cs" />
+     <Compile Include="Assets\Scripts\DealsDamage.cs" />
      <Compile Include="Assets\Scripts\MovementControls.cs" />
+     <Compile Include="Assets\Scripts\ShootControls.cs" />
+     <Compile Include="Assets\Scripts\TakesDamage.cs" />
+     <Compile Include="Assets\Scripts\TimedLife.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
