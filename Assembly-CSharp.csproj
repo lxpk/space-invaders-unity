@@ -50,6 +50,7 @@
      <Compile Include="Assets\Scripts\Input\MovementControls.cs" />
      <Compile Include="Assets\Scripts\Input\ShootControls.cs" />
      <Compile Include="Assets\Scripts\Utility\TimedLife.cs" />
+     <Compile Include="Assets\Scripts\World\PointsCounter.cs" />
      <Compile Include="Assets\Scripts\World\SpawnEnemies.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

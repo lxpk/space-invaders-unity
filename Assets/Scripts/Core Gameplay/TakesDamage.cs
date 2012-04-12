@@ -4,6 +4,8 @@ using System.Collections;
 public class TakesDamage : MonoBehaviour {
 	
 	public int Hitpoints;
+	public int Score;
+	public Transform PointsCounter;
 	int damage = 0;
 	
 	// Use this for initialization
@@ -19,6 +21,9 @@ public class TakesDamage : MonoBehaviour {
 	void OnDamage(int amount) {
 		damage += amount;
 		if (damage >= Hitpoints)
+		{
 			Destroy(gameObject);
+			PointsSingleton.Instance.ScorePoints(Score);
+		}
 	}
 }
