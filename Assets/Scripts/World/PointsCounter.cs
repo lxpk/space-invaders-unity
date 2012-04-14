@@ -44,7 +44,7 @@ public class PointsCounter : MonoBehaviour {
 	
 	void UpdateScore(int amount)
 	{		
-		var text = gameObject.GetComponent("TextMesh") as TextMesh;
+		var text = gameObject.GetComponent("GUIText") as GUIText;
 		text.text = amount.ToString();
 	}
 }

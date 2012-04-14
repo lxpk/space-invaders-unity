@@ -5,7 +5,6 @@ public class TakesDamage : MonoBehaviour {
 	
 	public int Hitpoints;
 	public int Score;
-	public Transform PointsCounter;
 	int damage = 0;
 	
 	// Use this for initialization
