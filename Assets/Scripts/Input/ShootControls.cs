@@ -16,7 +16,7 @@ public class ShootControls : MonoBehaviour {
 	// Update is called once per frame
 	void Update () {
 	
-		if (Input.GetButton("Shoot"))
+		if (Input.GetButton("Shoot") || Input.touchCount > 0)
 		{
 			if (Time.time - lastFireTime > RefireDelay)
 			{
