@@ -24,6 +24,9 @@ public class PointsSingleton
 	{
 		points += amount;
 	}
+	public void SaveScore()
+	{
+	}
 }
 
 
