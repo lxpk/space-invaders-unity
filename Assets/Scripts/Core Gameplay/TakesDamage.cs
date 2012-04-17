@@ -7,6 +7,8 @@ public class TakesDamage : MonoBehaviour {
 	public int Score;
 	int damage = 0;
 	
+	public Transform DeathEffect;
+	
 	// Use this for initialization
 	void Start () {
 	
@@ -23,6 +25,11 @@ public class TakesDamage : MonoBehaviour {
 		{
 			Destroy(gameObject);
 			PointsSingleton.Instance.ScorePoints(Score);
+			if (DeathEffect != null)
+			{
+				Transform death = Instantiate(DeathEffect, transform.position, Quaternion.identity) as Transform;
+				death.gameObject.GetComponent<ParticleSystem>().GetComponent<ParticleAnimator>().autodestruct = true;
+			}
 		}
 	}
 }
