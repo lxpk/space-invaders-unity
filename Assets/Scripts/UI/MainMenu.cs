@@ -13,10 +13,17 @@ public class MainMenu : MonoBehaviour {
 	
 	}
 	
+	Rect WindowRect(float left, float top, float width, float height){
+		return new Rect(left * Screen.width, top * Screen.height, width * Screen.width, height * Screen.height);
+	}
 	
 	void OnGUI (){
-		if (GUI.Button(new Rect(10,10,150,100), "Start Game")){
+		if (GUI.Button(WindowRect (0.3f, 0.2f, 0.4f, 0.3f), "Start Game")){
 			Application.LoadLevel("default");
+		}
+		
+		if (GUI.Button(WindowRect (0.3f, 0.6f, 0.4f, 0.3f), "Quit Game")){
+			Application.Quit();
 		}
 	}
 }
