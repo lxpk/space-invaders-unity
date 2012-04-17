@@ -5,6 +5,7 @@ ModelImporter:
     4300000: pCube1
     4300002: Enemy1:pCube1
     4300004: Enemy1:Enemy1:pCube1
+    4300006: Enemy1:Enemy1:Enemy1:pCube1
   serializedVersion: 10
   materials:
     importMaterials: 1
