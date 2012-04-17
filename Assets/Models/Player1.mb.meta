@@ -3,6 +3,7 @@ guid: a8a74bacff49c4843b1e4ff195a7b6c1
 ModelImporter:
   fileIDToRecycleName:
     4300000: pCube1
+    4300002: mesh
   serializedVersion: 10
   materials:
     importMaterials: 1
