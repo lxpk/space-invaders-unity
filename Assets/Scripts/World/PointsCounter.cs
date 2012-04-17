@@ -20,12 +20,27 @@ public class PointsSingleton
 	{
 		get{ return points; }
 	}
+	public void ResetPoints()
+	{
+		points = 0;
+	}
 	public void ScorePoints(int amount)
 	{
 		points += amount;
 	}
 	public void SaveScore()
 	{
+		if (PlayerPrefs.HasKey("HScore"))
+		{
+			if (Points > PlayerPrefs.GetInt("HScore"))
+			{
+				PlayerPrefs.SetInt("HScore", Points);
+			}
+		}
+		else
+		{
+			PlayerPrefs.SetInt("HScore", Points);
+		}
 	}
 }
 
@@ -36,7 +51,7 @@ public class PointsCounter : MonoBehaviour {
 	
 	// Use this for initialization
 	void Start () {
-		UpdateScore(0);
+		PointsSingleton.Instance.ResetPoints();
 	}
 	
 	// Update is called once per frame

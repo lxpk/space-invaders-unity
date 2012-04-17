@@ -18,11 +18,14 @@ public class MainMenu : MonoBehaviour {
 	}
 	
 	void OnGUI (){
-		if (GUI.Button(WindowRect (0.3f, 0.2f, 0.4f, 0.3f), "Start Game")){
+		
+		GUI.Label(WindowRect (0.4f, 0.1f, 0.2f, 0.1f), "High Score: " + PlayerPrefs.GetInt("HScore"));
+		
+		if (GUI.Button(WindowRect (0.3f, 0.3f, 0.4f, 0.2f), "Start Game")){
 			Application.LoadLevel("default");
 		}
 		
-		if (GUI.Button(WindowRect (0.3f, 0.6f, 0.4f, 0.3f), "Quit Game")){
+		if (GUI.Button(WindowRect (0.3f, 0.6f, 0.4f, 0.2f), "Quit Game")){
 			Application.Quit();
 		}
 	}

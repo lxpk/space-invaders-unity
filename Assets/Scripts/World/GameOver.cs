@@ -27,7 +27,8 @@ public class GameOver : MonoBehaviour {
 	void OnGUI (){
 		
 		if (enableUI == true){
-			if (GUI.Button(WindowRect (0.3f, 0.2f, 0.4f, 0.3f), "Game Over!")){
+			int score = PointsSingleton.Instance.Points;
+			if (GUI.Button(WindowRect (0.3f, 0.2f, 0.4f, 0.3f), "Game Over!\nYou Scored: "+score)){
 				Application.LoadLevel("menu");
 			}
 		}
