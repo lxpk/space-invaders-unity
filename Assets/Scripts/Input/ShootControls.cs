@@ -6,7 +6,9 @@ public class ShootControls : MonoBehaviour {
 	public Rigidbody BulletType;
 	public float ShootForce;
 	public float RefireDelay;
-	float lastFireTime = 0.0f;
+	float nextFireTime = 0.0f;
+	
+	public AudioClip FireSound;
 	
 	// Use this for initialization
 	void Start () {
@@ -18,11 +20,18 @@ public class ShootControls : MonoBehaviour {
 	
 		if (Input.GetButton("Shoot") || Input.touchCount > 0)
 		{
-			if (Time.time - lastFireTime > RefireDelay)
+			if (Time.time  > nextFireTime)
 			{
-				lastFireTime = Time.time;
+				nextFireTime = Time.time + RefireDelay;
 				var bullet = Instantiate(BulletType, transform.position, transform.rotation) as Rigidbody;
 				bullet.AddForce(transform.forward * ShootForce);
+				
+				if (FireSound != null)
+				{
+					var source = gameObject.GetComponent<AudioSource>();
+					if (source != null)
+						source.PlayOneShot(FireSound);
+				}
 			}
 		}
 	}
