@@ -52,6 +52,7 @@
      <Compile Include="Assets\Scripts\Input\MovementControls.cs" />
      <Compile Include="Assets\Scripts\Input\ShootControls.cs" />
      <Compile Include="Assets\Scripts\UI\MainMenu.cs" />
+     <Compile Include="Assets\Scripts\UI\SplashScreen.cs" />
      <Compile Include="Assets\Scripts\Utility\ParticleAutodestruct.cs" />
      <Compile Include="Assets\Scripts\Utility\TimedLife.cs" />
      <Compile Include="Assets\Scripts\World\GameOver.cs" />
