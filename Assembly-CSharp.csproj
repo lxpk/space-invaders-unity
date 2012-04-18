@@ -47,15 +47,16 @@
      <Compile Include="Assets\Scripts\Core Gameplay\AIFireRandom.cs" />
      <Compile Include="Assets\Scripts\Core Gameplay\AIMoveBackForth.cs" />
      <Compile Include="Assets\Scripts\Core Gameplay\DealsDamage.cs" />
+     <Compile Include="Assets\Scripts\Core Gameplay\PowerupRapidFire.cs" />
      <Compile Include="Assets\Scripts\Core Gameplay\TakesDamage.cs" />
      <Compile Include="Assets\Scripts\Input\MovementControls.cs" />
      <Compile Include="Assets\Scripts\Input\ShootControls.cs" />
      <Compile Include="Assets\Scripts\UI\MainMenu.cs" />
      <Compile Include="Assets\Scripts\Utility\ParticleAutodestruct.cs" />
      <Compile Include="Assets\Scripts\Utility\TimedLife.cs" />
-     <Compile Include="Assets\Scripts\World\GameOver.cs" />
-     <Compile Include="Assets\Scripts\World\PointsCounter.cs" />
-     <Compile Include="Assets\Scripts\World\SpawnEnemies.cs" />
+     <Compile Include="Assets\Textures\World\GameOver.cs" />
+     <Compile Include="Assets\Textures\World\PointsCounter.cs" />
+     <Compile Include="Assets\Textures\World\SpawnEnemies.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

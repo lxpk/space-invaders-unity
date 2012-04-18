@@ -8,10 +8,11 @@ public class TakesDamage : MonoBehaviour {
 	int damage = 0;
 	
 	public Transform DeathEffect;
+	public Transform Powerup;
+	public float DropChance = 0.0f;
 	
 	// Use this for initialization
 	void Start () {
-	
 	}
 	
 	// Update is called once per frame
@@ -19,17 +20,28 @@ public class TakesDamage : MonoBehaviour {
 	
 	}
 	
+	bool dead = false;
 	void OnDamage(int amount) {
 		damage += amount;
-		if (damage >= Hitpoints)
+		if (damage >= Hitpoints && !dead)
 		{
-			Destroy(gameObject);
-			PointsSingleton.Instance.ScorePoints(Score);
+			dead = true;
 			if (DeathEffect != null)
 			{
 				Transform death = Instantiate(DeathEffect, transform.position, Quaternion.identity) as Transform;
-				death.gameObject.GetComponent<ParticleSystem>().GetComponent<ParticleAnimator>().autodestruct = true;
+				//death.gameObject.GetComponent<ParticleSystem>().GetComponent<ParticleAnimator>().autodestruct = true;
 			}
+			if (Powerup != null)
+			{
+				var v = Random.value;
+				if (v < DropChance)
+				{
+					Instantiate(Powerup, transform.position, Quaternion.identity);
+				}
+			}
+			
+			Destroy(gameObject);
+			PointsSingleton.Instance.ScorePoints(Score);
 		}
 	}
 }
