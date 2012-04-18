@@ -28,8 +28,7 @@ public class TakesDamage : MonoBehaviour {
 			dead = true;
 			if (DeathEffect != null)
 			{
-				Transform death = Instantiate(DeathEffect, transform.position, Quaternion.identity) as Transform;
-				//death.gameObject.GetComponent<ParticleSystem>().GetComponent<ParticleAnimator>().autodestruct = true;
+				Instantiate(DeathEffect, transform.position, Quaternion.identity);
 			}
 			if (Powerup != null)
 			{
