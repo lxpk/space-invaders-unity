@@ -5,17 +5,17 @@ public class MainMenu : MonoBehaviour {
 
 
     public Texture TitleTexture;
-    public int TitleWidth;
-    public int TitleHeight;
-    public int TitleTop;
+    public float TitleWidth;
+    public float TitleHeight;
+    public float TitleTop;
 
     public Texture StartGameTex;
     public Texture SettingsTex;
     public Texture QuitTex;
 
-    public int ButtonWidth;
-    public int ButtonHeight;
-    public int ButtonTop;
+    public float ButtonWidth;
+    public float ButtonHeight;
+    public float ButtonTop;
 
 	// Use this for initialization
 	void Start () {
@@ -30,52 +30,110 @@ public class MainMenu : MonoBehaviour {
 	Rect WindowRect(float left, float top, float width, float height){
 		return new Rect(left * Screen.width, top * Screen.height, width * Screen.width, height * Screen.height);
 	}
-	
-	void OnGUI (){
 
+    Rect CenteredScreenSpace(float top, float width, float height)
+    {
+        return new Rect(Screen.width * (1 - width) / 2, top * Screen.height, width * Screen.width, height * Screen.height);
+    }
+
+    bool settings = false;
+
+
+    void GUIMainMenu()
+    {
         //Title
         GUI.DrawTexture(
-            new Rect(
-                (Screen.width - TitleWidth) / 2, 
-                TitleTop, 
-                TitleWidth, 
-                TitleHeight), 
+            CenteredScreenSpace(
+                TitleTop,
+                TitleWidth,
+                TitleHeight),
             TitleTexture);
 
-		GUI.Label(WindowRect (0.4f, 0.1f, 0.2f, 0.1f), "High Score: " + PlayerPrefs.GetInt("HScore"));
+        GUI.Label(WindowRect(0.4f, 0.1f, 0.2f, 0.1f), "High Score: " + PlayerPrefs.GetInt("HScore"));
 
         if (GUI.Button(
-            new Rect(
-                (Screen.width - ButtonWidth) / 2, 
-                ButtonTop, 
-                ButtonWidth, 
-                ButtonHeight), 
+            CenteredScreenSpace(
+                ButtonTop,
+                ButtonWidth,
+                ButtonHeight),
             StartGameTex))
-        {
-			Application.LoadLevel("default");
-		}
-
-        if (GUI.Button(
-            new Rect(
-                (Screen.width - ButtonWidth) / 2,
-                ButtonTop + ButtonHeight, 
-                ButtonWidth, 
-                ButtonHeight), 
-            SettingsTex))
         {
             Application.LoadLevel("default");
         }
 
+        if (GUI.Button(
+            CenteredScreenSpace(
+                ButtonTop + ButtonHeight,
+                ButtonWidth,
+                ButtonHeight),
+            SettingsTex))
+        {
+            LoadSettings();
+            settings = true;
+        }
+
 
         if (GUI.Button(
-            new Rect(
-                (Screen.width - ButtonWidth) / 2, 
+            CenteredScreenSpace(
                 ButtonTop + 2 * ButtonHeight,
-                ButtonWidth, 
-                ButtonHeight), 
+                ButtonWidth,
+                ButtonHeight),
             QuitTex))
         {
-			Application.Quit();
-		}
+            Application.Quit();
+        }
+    }
+
+
+    
+    string inputMode;
+
+    void SaveSettings()
+    {
+        PlayerPrefs.SetString("InputMode", inputMode);
+    }
+
+    void LoadSettings()
+    {
+        inputMode = "Accelerometer";
+        if (PlayerPrefs.HasKey("InputMode"))
+			inputMode = PlayerPrefs.GetString("InputMode");
+		
+    }
+
+    void GUISettings()
+    {
+        if (GUI.Button(
+            CenteredScreenSpace(
+                ButtonTop,
+                ButtonWidth,
+                ButtonHeight),
+            inputMode))
+        {
+            if (inputMode == "Accelerometer")
+                inputMode = "Swipe";
+            else if (inputMode == "Swipe")
+                inputMode = "Accelerometer";
+        }
+
+        if (GUI.Button(
+            CenteredScreenSpace(
+                ButtonTop + ButtonHeight,
+                ButtonWidth,
+                ButtonHeight),
+            "Main Menu"))
+        {
+            SaveSettings();
+            settings = false;
+        }
+
+    }
+
+	void OnGUI ()
+    {
+        if (!settings)
+            GUIMainMenu();
+        else
+            GUISettings();
 	}
 }
