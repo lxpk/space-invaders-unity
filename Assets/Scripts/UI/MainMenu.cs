@@ -49,7 +49,7 @@ public class MainMenu : MonoBehaviour {
                 TitleHeight),
             TitleTexture);
 
-        GUI.Label(WindowRect(0.4f, 0.1f, 0.2f, 0.1f), "High Score: " + PlayerPrefs.GetInt("HScore"));
+        GUI.Label(CenteredScreenSpace(0.8f, 0.6f, 0.1f), "High Score: " + PlayerPrefs.GetInt("HScore"));
 
         if (GUI.Button(
             CenteredScreenSpace(
@@ -95,7 +95,7 @@ public class MainMenu : MonoBehaviour {
 
     void LoadSettings()
     {
-        inputMode = "Accelerometer";
+        inputMode = "Tilt";
         if (PlayerPrefs.HasKey("InputMode"))
 			inputMode = PlayerPrefs.GetString("InputMode");
 		
@@ -108,12 +108,12 @@ public class MainMenu : MonoBehaviour {
                 ButtonTop,
                 ButtonWidth,
                 ButtonHeight),
-            inputMode))
+            "Input: " + inputMode))
         {
-            if (inputMode == "Accelerometer")
+            if (inputMode == "Tilt")
                 inputMode = "Swipe";
             else if (inputMode == "Swipe")
-                inputMode = "Accelerometer";
+                inputMode = "Tilt";
         }
 
         if (GUI.Button(
