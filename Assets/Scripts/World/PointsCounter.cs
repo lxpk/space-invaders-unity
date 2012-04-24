@@ -52,6 +52,7 @@ public class PointsCounter : MonoBehaviour {
 	// Use this for initialization
 	void Start () {
 		PointsSingleton.Instance.ResetPoints();
+        UpdateScore(0);
 	}
 	
 	// Update is called once per frame
@@ -63,6 +64,6 @@ public class PointsCounter : MonoBehaviour {
 	void UpdateScore(int amount)
 	{		
 		var text = gameObject.GetComponent("GUIText") as GUIText;
-		text.text = amount.ToString();
+        text.text = "Points: " + amount;
 	}
 }

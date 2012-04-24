@@ -40,8 +40,7 @@ public class TakesDamage : MonoBehaviour {
 			}
             if (Score > 0)
             {
-                Quaternion up = Quaternion.identity;
-                up.SetEulerAngles(90, 0, 0);
+                Quaternion up = Quaternion.Euler(90, 0, 0);
                 var text = Instantiate(Resources.Load("FloatingText"), transform.position, up) as GameObject;
                 text.GetComponent<TextMesh>().text = Score.ToString();
             }

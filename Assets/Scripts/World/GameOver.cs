@@ -3,19 +3,39 @@ using System.Collections;
 
 public class GameOver : MonoBehaviour {
 
-	public Transform PlayerObject;
-	
+	public Transform PlayerClass;
+    public float PlayerZ;
+    public int Lives;
+
+    Transform playerObject;
+
+
+    void SpawnPlayer()
+    {
+        playerObject = Instantiate(PlayerClass, new Vector3(0.0f, 0.0f, PlayerZ), Quaternion.identity) as Transform;
+    }
+
 	// Use this for initialization
 	void Start () {
-	
+        SpawnPlayer();
 	}
 	
 	// Update is called once per frame
 	void Update () {
-		if (PlayerObject == null)
+        gameObject.GetComponent<GUIText>().text = "Lives: " + Lives;
+
+        if (playerObject == null)
 		{
-			PointsSingleton.Instance.SaveScore();
-			enableUI = true;
+            if (Lives > 0)
+            {
+                Lives--;
+                SpawnPlayer();
+            }
+            else
+            {
+                PointsSingleton.Instance.SaveScore();
+                enableUI = true;
+            }
 		}
 	}
 	
