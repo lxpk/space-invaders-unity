@@ -38,7 +38,7 @@ public class RapidFire : MonoBehaviour {
 }
 
 public class PowerupRapidFire : MonoBehaviour {
-	
+
 	public float Duration;
 	public float SpeedFactor;
 	
@@ -69,6 +69,10 @@ public class PowerupRapidFire : MonoBehaviour {
 		if (other.gameObject.tag == "Player")
 		{
 			ActivateEffect(other.gameObject);
+            Quaternion up = Quaternion.identity;
+            up.SetEulerAngles(90, 0, 0);
+            var text = Instantiate(Resources.Load("FloatingText"), transform.position, up) as GameObject;
+            text.GetComponent<TextMesh>().text = "Rapid Fire";
 			Destroy (this.gameObject);
 		}
 	}

@@ -4,7 +4,7 @@ using System.Collections;
 public class TakesDamage : MonoBehaviour {
 	
 	public int Hitpoints;
-	public int Score;
+	public int Score = 0;
 	int damage = 0;
 	
 	public Transform DeathEffect;
@@ -38,6 +38,13 @@ public class TakesDamage : MonoBehaviour {
 					Instantiate(Powerup, transform.position, Quaternion.identity);
 				}
 			}
+            if (Score > 0)
+            {
+                Quaternion up = Quaternion.identity;
+                up.SetEulerAngles(90, 0, 0);
+                var text = Instantiate(Resources.Load("FloatingText"), transform.position, up) as GameObject;
+                text.GetComponent<TextMesh>().text = Score.ToString();
+            }
 			
 			Destroy(gameObject);
 			PointsSingleton.Instance.ScorePoints(Score);
